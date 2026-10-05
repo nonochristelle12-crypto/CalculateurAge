@@ -3,8 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalculateurAge.Views.ResultatPage"
              Title="Resultat">
-    <VerticalStackLayout Padding="20" Spacing="16">
-        <Label x:Name="lblMessage" FontSize="22"/>
-        <Button Text="Retour" Clicked="OnRetourClicked"/>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+            <Label Text="{Binding Nom, StringFormat='Bonjour {0} !'}" 
+                   FontSize="24" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,10,0,10"/>
+            <Label Text="{Binding AgeAnnees, StringFormat='Vous avez {0} ans'}" 
+                   FontSize="22" 
+                   TextColor="#2196F3"
+                   HorizontalOptions="Center"/>
+            <Label Text="{Binding SigneAstrologique, StringFormat='Votre signe : {0}'}" 
+                   FontSize="18" 
+                   TextColor="Purple"
+                   HorizontalOptions="Center"/>
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,10,0,10"/>
+            <Label Text="Votre age en detail :" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <Label Text="{Binding AgeMois, StringFormat='- {0} mois'}" FontSize="16"/>
+            <Label Text="{Binding AgeSemaines, StringFormat='- {0} semaines'}" FontSize="16"/>
+            <Label Text="{Binding AgeJours, StringFormat='- {0} jours'}" FontSize="16"/>
+            <Label Text="{Binding AgeHeures, StringFormat='- {0} heures'}" FontSize="16"/>
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,10,0,10"/>
+            <Label Text="Progression de votre vie (sur 80 ans) :" 
+                   FontSize="16" 
+                   FontAttributes="Bold"/>
+            <ProgressBar Progress="{Binding ProgressionVie}" 
+                         ProgressColor="#4CAF50"
+                         HeightRequest="20"/>
+            <Label Text="{Binding ProgressionVie, StringFormat='{0:F1} %'}" 
+                   FontSize="14" 
+                   HorizontalOptions="Center"/>
+            <Button Text="Retour"
+                    Command="{Binding RetourCommand}"
+                    Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
